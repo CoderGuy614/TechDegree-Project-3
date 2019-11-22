@@ -1,7 +1,6 @@
 
 // Assigning global variables. Initializing validity to false.
 // Github Master
-alert("connected")
 let totalCost = 0;
 let allowSubmit = false;
 let validPayment = false;
