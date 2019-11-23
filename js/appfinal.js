@@ -194,9 +194,15 @@ $namediv.hide()
 
 // Creating the Email Error Message Div and Hiding It
 const $emaildiv = $("<div></div>", {id: "email_div", "class": "error_div"});
-$emaildiv.html('<strong>Please enter a valid email address</strong>')
+$emaildiv.html('<strong>Please check email address format</strong>')
 $("#mail").after($emaildiv);
 $emaildiv.hide()
+
+// Creating the Email Error Message Div and Hiding It
+const $emaildiv2 = $("<div></div>", {id: "email_div2", "class": "error_div"});
+$emaildiv2.html('<strong>Email address must not be left blank</strong>')
+$("#mail").after($emaildiv2);
+$emaildiv2.hide()
 
 // Creating the Activities Error Message Div and Hiding It
 const $activediv = $("<div></div>", {id: "activities_div", "class": "error_div"});
@@ -379,10 +385,16 @@ $('#mail').on('keyup', function(){
 	const mailInput = $('#mail').val()
  	if(checkValidEmail(mailInput)) {
  		$emaildiv.hide();
+ 		$emaildiv2.hide();
  		$('#mail').removeClass('red')
  		return true;
+ 	} else if (mailInput === ""){
+ 		$emaildiv.hide();
+ 		$emaildiv2.show();
+ 		$('#mail').addClass('red')
  	} else {
  		$emaildiv.show();
+ 		$emaildiv2.hide();
  		$('#mail').addClass('red')
  		return false;
  	}
